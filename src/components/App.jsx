@@ -25,27 +25,22 @@ class App extends Component {
       
     }))
   }
-
   
-  // countTotalFeedback = (addGoodFeedback, addNeutralFeedback, addBadFeedback) => { 
-  //   let together = 0;
-     
-  //   together = addGoodFeedback + addNeutralFeedback + addBadFeedback
+  countTotalFeedback = () => { 
+  return this.state.good + this.state.neutral + this.state.bad
     
-  // }
+  }
 
-  // handltPositive = (state) => {
-  //   let result = 0;
-  //   result = Math.round(((this.state.good + this.state.neutral + this.state.bad) / this.state.good * 100))
-
-  //   return result
-  // }
+  handltPositive = () => {
+    
+    return (this.state.good * 100 / (this.state.good + this.state.neutral + this.state.bad)).toFixed(2)
+  }
 
   render() {
     const { good , neutral , bad} = this.state
   
 
-    const total = (good * 100 / (good + neutral + bad)).toFixed(2)
+    // const total = (good * 100 / (good + neutral + bad)).toFixed(2)
       return <div
        style={{
         textAlign: 'center',
@@ -63,8 +58,8 @@ class App extends Component {
             <p>Good: {good}</p>
             <p>Neutral: {neutral}</p>
             <p>Bad:{bad} </p>
-            <p>Total: {good + neutral + bad}</p>
-            <p>Positive feedback: {total}%</p>
+            <p>Total: {this.countTotalFeedback()}</p>
+            <p>Positive feedback: {this.handltPositive()}%</p>
         </div>
        
      
