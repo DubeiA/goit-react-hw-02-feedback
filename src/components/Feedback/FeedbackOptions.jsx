@@ -3,7 +3,7 @@ import css from "../Feedback/FeedbackOptions.module.css";
 // import styled from 'styled-components'
 
 export const FeedbackOptions = ({options, onLeaveFeedback}) => { 
-
+    console.log(options);
     return <ul className={css.list}>
         {options.map(key => {
             return <li key={key}>
